@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Control System - Abdullah Alamoudi</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #27ae60;
+            --text-light: #ecf0f1;
+            --bg-dark: #1a1a2e;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8f9fa;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--bg-dark) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+        
+        /* Project Hero Section */
+        .project-hero {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 120px 0 80px 0;
+        }
+        
+        .project-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .project-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            margin: 5px;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            padding: 60px 0;
+            background-color: white;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+        }
+        
+        .subsection-title {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 30px 0 20px 0;
+        }
+        
+        /* Feature Cards */
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Challenge & Solution Cards */
+        .challenge-card {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .solution-card {
+            background-color: #d4edda;
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        /* Technical Details */
+        .tech-detail {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .code-snippet {
+            background-color: #1a1a2e;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        /* Results Section */
+        .result-metric {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .metric-label {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+        
+        /* Image Gallery */
+        .project-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 20px;
+            width: 1px;
+            height: calc(100% + 15px);
+            background-color: #dee2e6;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        /* Navigation Buttons */
+        .project-nav {
+            padding: 40px 0;
+        }
+        
+        .nav-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .nav-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0d0d1a;
+            color: var(--text-light);
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2rem;
+            }
+            .metric-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">AA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#projects">All Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="project-title">Network Control System</h1>
+                    <p class="project-meta">
+                        <i class="bi bi-calendar3"></i> Spring 2025 | 
+                        <i class="bi bi-clock"></i> 3 Months | 
+                        <i class="bi bi-person"></i> Individual Project
+                    </p>
+                    <p class="lead mt-4">A sophisticated network traffic management pipeline enabling precise control of latency and bandwidth for distributed systems in a federated learning environment.</p>
+                    <div class="mt-4">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Linux Traffic Control</span>
+                        <span class="tech-badge">RabbitMQ</span>
+                        <span class="tech-badge">Distributed Systems</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="bi bi-diagram-3" style="font-size: 10rem; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <div class="container">
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="lead">This project addresses the critical need for dynamic network control in federated learning environments where multiple devices with varied architectures need to communicate efficiently while simulating real-world network conditions.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="feature-card text-center">
+                                <i class="bi bi-speedometer2 feature-icon"></i>
+                                <h4>20+ Devices</h4>
+                                <p>Managed network features across diverse Linux devices with varied architectures</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card text-center">
+                                <i class="bi bi-code-slash feature-icon"></i>
+                                <h4>1000+ Lines of Code</h4>
+                                <p>Developed comprehensive system integrated seamlessly with existing infrastructure</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card text-center">
+                                <i class="bi bi-check2-circle feature-icon"></i>
+                                <h4>5+ Test Scripts</h4>
+                                <p>Self-developed testing suite ensuring reliability of each pipeline component</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem Statement -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Problem Statement</h2>
+                    <p>In federated learning testbeds, researchers need to simulate various network conditions to test the robustness of their algorithms. However, manually configuring network parameters across multiple devices is:</p>
+                    
+                    <div class="challenge-card">
+                        <h5><i class="bi bi-exclamation-triangle"></i> Challenge 1: Scalability</h5>
+                        <p>Managing network configurations manually across 20+ devices is time-consuming and error-prone, especially when devices have different architectures and operating system configurations.</p>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <h5><i class="bi bi-exclamation-triangle"></i> Challenge 2: Dynamic Control</h5>
+                        <p>Researchers need to dynamically adjust network parameters (latency, bandwidth, packet loss) during experiments to simulate real-world conditions like poor connectivity or network congestion.</p>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <h5><i class="bi bi-exclamation-triangle"></i> Challenge 3: Integration</h5>
+                        <p>The solution must integrate with existing federated learning frameworks without requiring modifications to the original codebase, maintaining backward compatibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solution Approach -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Solution Approach</h2>
+                    
+                    <h3 class="subsection-title">Architecture Design</h3>
+                    <p>The system follows a distributed architecture pattern with centralized control and decentralized execution:</p>
+                    
+                    <div class="tech-detail">
+                        <h5>Core Components:</h5>
+                        <ul>
+                            <li><strong>Control Server:</strong> Central management system that orchestrates network configurations</li>
+                            <li><strong>Message Queue (RabbitMQ):</strong> Asynchronous communication layer for reliable command distribution</li>
+                            <li><strong>Device Agents:</strong> Lightweight agents running on each device to execute network control commands</li>
+                            <li><strong>Traffic Control Interface:</strong> Python wrapper around Linux TC for network manipulation</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="subsection-title">Implementation Details</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="solution-card">
+                                <h5><i class="bi bi-check-circle"></i> Automated Pipeline</h5>
+                                <p>Developed Python scripts that automatically detect device architecture and apply appropriate network configurations using Linux Traffic Control (TC) commands.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="solution-card">
+                                <h5><i class="bi bi-check-circle"></i> Message Queue Integration</h5>
+                                <p>Implemented RabbitMQ for reliable, asynchronous communication between the control server and device agents, ensuring commands are delivered even during network disruptions.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="solution-card">
+                                <h5><i class="bi bi-check-circle"></i> Non-Invasive Integration</h5>
+                                <p>Designed the system as a standalone service that operates at the network layer, requiring no modifications to existing federated learning code.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="solution-card">
+                                <h5><i class="bi bi-check-circle"></i> Comprehensive Testing</h5>
+                                <p>Created automated testing scripts for each component, including unit tests, integration tests, and stress tests to ensure system reliability.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Technical Implementation</h3>
+                    
+                    <div class="code-snippet">
+                        <pre># Example: Network Control Command Structure
+{
+    "device_id": "node_001",
+    "interface": "eth0",
+    "parameters": {
+        "bandwidth": "100mbit",
+        "latency": "50ms",
+        "jitter": "10ms",
+        "packet_loss": "0.1%"
+    },
+    "duration": 300
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Features -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Key Features</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>Real-time Network Control</h5>
+                            <p>Adjust bandwidth, latency, jitter, and packet loss parameters in real-time across all connected devices through a unified API.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Architecture-Agnostic</h5>
+                            <p>Automatically detects and adapts to different device architectures (x86, ARM, etc.) and network interfaces.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Fault Tolerance</h5>
+                            <p>Built-in retry mechanisms and error handling ensure system continues operating even when individual devices fail.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Monitoring & Logging</h5>
+                            <p>Comprehensive logging system tracks all network changes and provides real-time monitoring of network conditions.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Scalable Design</h5>
+                            <p>Can easily scale from a few devices to hundreds without architectural changes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results & Impact -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Results & Impact</h2>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="result-metric">
+                                <div class="metric-number">95%</div>
+                                <div class="metric-label">Reduction in Setup Time</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="result-metric">
+                                <div class="metric-number">20+</div>
+                                <div class="metric-label">Devices Managed</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="result-metric">
+                                <div class="metric-number">100%</div>
+                                <div class="metric-label">Test Coverage</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="result-metric">
+                                <div class="metric-number">0</div>
+                                <div class="metric-label">Codebase Changes Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h3 class="subsection-title">Project Outcomes</h3>
+                        <ul>
+                            <li>Successfully deployed in KAUST's federated learning testbed for research experiments</li>
+                            <li>Enabled researchers to simulate complex network scenarios that were previously impossible</li>
+                            <li>Reduced experiment setup time from hours to minutes</li>
+                            <li>Provided foundation for future network simulation research</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technologies Used -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Technologies & Tools</h2>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="tech-detail">
+                                <h5>Programming Languages</h5>
+                                <p><strong>Python 3.9+:</strong> Primary language for system implementation, chosen for its excellent system integration capabilities and extensive library support.</p>
+                                <p><strong>Bash Scripting:</strong> Used for system-level operations and automation scripts.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tech-detail">
+                                <h5>Message Queue</h5>
+                                <p><strong>RabbitMQ:</strong> Enterprise-grade message broker for reliable asynchronous communication between components, ensuring command delivery even during network disruptions.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tech-detail">
+                                <h5>Network Control</h5>
+                                <p><strong>Linux Traffic Control (TC):</strong> Kernel-level network traffic management tool for controlling bandwidth, latency, and packet loss.</p>
+                                <p><strong>Netlink:</strong> Socket-based interface for kernel-userspace communication.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tech-detail">
+                                <h5>Testing & Monitoring</h5>
+                                <p><strong>pytest:</strong> Testing framework for unit and integration tests.</p>
+                                <p><strong>Logging:</strong> Python logging module with custom formatters for comprehensive system monitoring.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lessons Learned -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Lessons Learned</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="subsection-title">Technical Insights</h3>
+                            <ul>
+                                <li>Understanding kernel-level network operations is crucial for building reliable network control systems</li>
+                                <li>Message queues provide excellent decoupling between system components</li>
+                                <li>Comprehensive error handling is essential when dealing with system-level operations</li>
+                                <li>Architecture differences between devices require careful abstraction design</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="subsection-title">Project Management</h3>
+                            <ul>
+                                <li>Early and frequent testing saves significant debugging time later</li>
+                                <li>Documentation is crucial for system maintainability</li>
+                                <li>Modular design allows for easier testing and maintenance</li>
+                                <li>Understanding user requirements deeply leads to better design decisions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Navigation -->
+        <div class="project-nav text-center">
+            <a href="../../index.html" class="nav-btn">
+                <i class="bi bi-arrow-left"></i> Back to Portfolio
+            </a>
+            <a href="../../index.html#projects" class="nav-btn">
+                View All Projects
+            </a>
+            <a href="../deep_learning/deep_learning.html" class="nav-btn">
+                Next Project <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Abdullah Alamoudi. All rights reserved. | Software Engineer | Distributed Systems Specialist</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
