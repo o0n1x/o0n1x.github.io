@@ -9,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
+    <!-- PrismJS Syntax highlight  -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -139,6 +141,13 @@
         }
         
         /* Technical Details */
+
+        .code-snippet pre[class*="language-"],
+        .code-snippet code[class*="language-"] {
+            background: none !important;
+            background-color: transparent !important;
+        }
+
         .tech-detail {
             background-color: #f8f9fa;
             border-radius: 10px;
@@ -293,7 +302,7 @@
                     <h1 class="project-title">Network Control System</h1>
                     <p class="project-meta">
                         <i class="bi bi-calendar3"></i> Spring 2025 | 
-                        <i class="bi bi-clock"></i> 3 Months | 
+                        <i class="bi bi-clock"></i> 12 Weeks | 
                         <i class="bi bi-person"></i> Individual Project
                     </p>
                     <p class="lead mt-4">A sophisticated network traffic management pipeline enabling precise control of latency and bandwidth for distributed systems in a federated learning environment.</p>
@@ -317,7 +326,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="section-title">Project Overview</h2>
-                    <p class="lead">This project addresses the critical need for dynamic network control in federated learning environments where multiple devices with varied architectures need to communicate efficiently while simulating real-world network conditions.</p>
+                    <p class="lead">This project's goal is to develop dynamic network control for a federated learning testbed  <a href="https://github.com/sands-lab/colext" >(CoLExT)</a> where multiple devices with varied architectures need to communicate efficiently while simulating real-world network conditions.</p>
                     
                     <div class="row mt-4">
                         <div class="col-md-4">
@@ -331,7 +340,7 @@
                             <div class="feature-card text-center">
                                 <i class="bi bi-code-slash feature-icon"></i>
                                 <h4>1000+ Lines of Code</h4>
-                                <p>Developed comprehensive system integrated seamlessly with existing infrastructure</p>
+                                <p>Developed efficient system integrate seamlessly with existing infrastructure</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -351,22 +360,23 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="section-title">Problem Statement</h2>
-                    <p>In federated learning testbeds, researchers need to simulate various network conditions to test the robustness of their algorithms. However, manually configuring network parameters across multiple devices is:</p>
+                    <p>Federated learning Research and Development needs an environment where real world scenarios can be tested on algorithms, complete network control is essential in simulating these environments, but comes we various challenges:</p>
                     
                     <div class="challenge-card">
-                        <h5><i class="bi bi-exclamation-triangle"></i> Challenge 1: Scalability</h5>
-                        <p>Managing network configurations manually across 20+ devices is time-consuming and error-prone, especially when devices have different architectures and operating system configurations.</p>
+                        <h5><i class="bi bi-exclamation-triangle"></i> Challenge 1: Heterogeneity</h5>
+                        <p>the system needs to support multiple environment and extreme scenarios due to the nature of federated learning Heterogeneity in connected devices.</p>
                     </div>
                     
                     <div class="challenge-card">
                         <h5><i class="bi bi-exclamation-triangle"></i> Challenge 2: Dynamic Control</h5>
-                        <p>Researchers need to dynamically adjust network parameters (latency, bandwidth, packet loss) during experiments to simulate real-world conditions like poor connectivity or network congestion.</p>
+                        <p>Testbed users need to dynamically adjust network parameters (latency, bandwidth, packet loss) during experiments to simulate real-world conditions like poor connectivity or network congestion.</p>
                     </div>
                     
                     <div class="challenge-card">
-                        <h5><i class="bi bi-exclamation-triangle"></i> Challenge 3: Integration</h5>
-                        <p>The solution must integrate with existing federated learning frameworks without requiring modifications to the original codebase, maintaining backward compatibility.</p>
+                        <h5><i class="bi bi-exclamation-triangle"></i> Challenge 3: Concurrency</h5>
+                        <p>the system is a distributed network of devices each is working in it own separate timeline, so concurrency needs to be taken into account across different devices and network scenarios</p>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -383,10 +393,10 @@
                     <div class="tech-detail">
                         <h5>Core Components:</h5>
                         <ul>
-                            <li><strong>Control Server:</strong> Central management system that orchestrates network configurations</li>
-                            <li><strong>Message Queue (RabbitMQ):</strong> Asynchronous communication layer for reliable command distribution</li>
-                            <li><strong>Device Agents:</strong> Lightweight agents running on each device to execute network control commands</li>
-                            <li><strong>Traffic Control Interface:</strong> Python wrapper around Linux TC for network manipulation</li>
+                            <li><strong>Control Server:</strong> Central management system that orchestrates network configurations and hosts Message broker</li>
+                            <li><strong>Publish/Subscribe Message Queue (RabbitMQ):</strong> Asynchronous communication layer for synchronization and communication</li>
+                            <li><strong>Device Agents:</strong> Lightweight agents running on each device including server to execute network control commands</li>
+                            <li><strong>YAML Translator:</strong> Sub system that translates input YAML network description into usable tc commands for each device</li>
                         </ul>
                     </div>
 
@@ -396,45 +406,58 @@
                         <div class="col-md-6">
                             <div class="solution-card">
                                 <h5><i class="bi bi-check-circle"></i> Automated Pipeline</h5>
-                                <p>Developed Python scripts that automatically detect device architecture and apply appropriate network configurations using Linux Traffic Control (TC) commands.</p>
+                                <p>Developed Python scripts that automate from single YAML file to complete network control management both statically and dynamically for each device given the input file using Kubernetes</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="solution-card">
                                 <h5><i class="bi bi-check-circle"></i> Message Queue Integration</h5>
-                                <p>Implemented RabbitMQ for reliable, asynchronous communication between the control server and device agents, ensuring commands are delivered even during network disruptions.</p>
+                                <p>Implemented RabbitMQ for reliable, time synchronization for dynamic network commands</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="solution-card">
-                                <h5><i class="bi bi-check-circle"></i> Non-Invasive Integration</h5>
-                                <p>Designed the system as a standalone service that operates at the network layer, requiring no modifications to existing federated learning code.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="solution-card">
-                                <h5><i class="bi bi-check-circle"></i> Comprehensive Testing</h5>
-                                <p>Created automated testing scripts for each component, including unit tests, integration tests, and stress tests to ensure system reliability.</p>
+                                <h5><i class="bi bi-check-circle"></i> Seamless and modular Integration</h5>
+                                <p>Designed the system as a standalone system that works alone if needed and made each core component as a module that work alone and only communicate once with other component if possible</p>
                             </div>
                         </div>
                     </div>
-
+                    <div class="row my-4">
+                        <div class="col-lg-8 mx-auto">
+                            <img src="../../assets/diagrams/dynamicv4.png" 
+                            alt="Network Control System Architecture Diagram showing distributed components"
+                            loading="lazy"
+                            class="img-fluid project-image">
+                        </div>
+                    </div>
                     <h3 class="subsection-title">Technical Implementation</h3>
                     
                     <div class="code-snippet">
-                        <pre># Example: Network Control Command Structure
-{
-    "device_id": "node_001",
-    "interface": "eth0",
-    "parameters": {
-        "bandwidth": "100mbit",
-        "latency": "50ms",
-        "jitter": "10ms",
-        "packet_loss": "0.1%"
-    },
-    "duration": 300
-}</pre>
+                        <pre><code class="language-yaml"># Example: Network Control Command Input Structure
+                            
+network:
+  - tag: default
+    upstream:
+      bandwidth: 50Mbps
+    downstream:
+      bandwidth: 50Mbps
+  - tag: DynFast
+    dynamic:
+    - iterator: time 
+      structure: [bandwidth, latency, delay-distribution] 
+      commands:
+      - [20, set, outgoing, 1000Mbps, 0.1ms, normal]
+      - [100, del, outgoing]
+      - [100, set, outgoing, 1000Mbps, 0.1ms, normal]
+      - [120, set, outgoing, 10Mbps,  0.1ms, normal]
+clients:
+  - dev_type: OrangePi5B
+    count: 2
+    network: 
+    - default
+    - DynFast</code></pre>
                     </div>
+                    <p> In this example, we have set 2 network configurations , default and DynFast , where the first is static and second is dynamic. and the OrangePi client is set to use both networks. the static network is applied before the test starts and the dynamic network is applied overtime according to the configurations</p>
                 </div>
             </div>
         </div>
@@ -447,16 +470,12 @@
                     
                     <div class="timeline">
                         <div class="timeline-item">
-                            <h5>Real-time Network Control</h5>
-                            <p>Adjust bandwidth, latency, jitter, and packet loss parameters in real-time across all connected devices through a unified API.</p>
+                            <h5>Static and Dynamic Network Control</h5>
+                            <p>Adjust bandwidth, latency, jitter, and packet loss parameters in real-time across all connected devices through a unified config file.</p>
                         </div>
                         <div class="timeline-item">
-                            <h5>Architecture-Agnostic</h5>
-                            <p>Automatically detects and adapts to different device architectures (x86, ARM, etc.) and network interfaces.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h5>Fault Tolerance</h5>
-                            <p>Built-in retry mechanisms and error handling ensure system continues operating even when individual devices fail.</p>
+                            <h5>Time synchronization for dynamic control</h5>
+                            <p>time stamps used in dynamic network commands are synced across devices for reliable test results and metrics</p>
                         </div>
                         <div class="timeline-item">
                             <h5>Monitoring & Logging</h5>
@@ -465,6 +484,10 @@
                         <div class="timeline-item">
                             <h5>Scalable Design</h5>
                             <p>Can easily scale from a few devices to hundreds without architectural changes.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Modular and Usable Design</h5>
+                            <p>system coded with modularity in mind, making it easy to maintain and build upon in the future</p>
                         </div>
                     </div>
                 </div>
@@ -480,8 +503,8 @@
                     <div class="row mt-4">
                         <div class="col-md-3">
                             <div class="result-metric">
-                                <div class="metric-number">95%</div>
-                                <div class="metric-label">Reduction in Setup Time</div>
+                                <div class="metric-number">+1</div>
+                                <div class="metric-label">dimension in environment control</div>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -498,8 +521,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="result-metric">
-                                <div class="metric-number">0</div>
-                                <div class="metric-label">Codebase Changes Required</div>
+                                <div class="metric-number">2</div>
+                                <div class="metric-label">files only Changed from the codebase Required</div>
                             </div>
                         </div>
                     </div>
@@ -507,10 +530,9 @@
                     <div class="mt-4">
                         <h3 class="subsection-title">Project Outcomes</h3>
                         <ul>
-                            <li>Successfully deployed in KAUST's federated learning testbed for research experiments</li>
-                            <li>Enabled researchers to simulate complex network scenarios that were previously impossible</li>
-                            <li>Reduced experiment setup time from hours to minutes</li>
-                            <li>Provided foundation for future network simulation research</li>
+                            <li>to be deployed in KAUST's federated learning testbed for research experiments</li>
+                            <li>Enabled researchers to simulate complex network scenarios that were previously not possible in testbed</li>
+                            <li>Provided foundation for future distributed network control in distributed testbeds</li>
                         </ul>
                     </div>
                 </div>
@@ -541,13 +563,12 @@
                             <div class="tech-detail">
                                 <h5>Network Control</h5>
                                 <p><strong>Linux Traffic Control (TC):</strong> Kernel-level network traffic management tool for controlling bandwidth, latency, and packet loss.</p>
-                                <p><strong>Netlink:</strong> Socket-based interface for kernel-userspace communication.</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="tech-detail">
-                                <h5>Testing & Monitoring</h5>
-                                <p><strong>pytest:</strong> Testing framework for unit and integration tests.</p>
+                                <h5>Other Tools</h5>
+                                <p><strong>Kubernetes Config Maps</strong> a Kubernetes object designed to store non-confidential configuration data as key-value pairs and mounted to containers</p>
                                 <p><strong>Logging:</strong> Python logging module with custom formatters for comprehensive system monitoring.</p>
                             </div>
                         </div>
@@ -566,19 +587,18 @@
                         <div class="col-md-6">
                             <h3 class="subsection-title">Technical Insights</h3>
                             <ul>
-                                <li>Understanding kernel-level network operations is crucial for building reliable network control systems</li>
-                                <li>Message queues provide excellent decoupling between system components</li>
-                                <li>Comprehensive error handling is essential when dealing with system-level operations</li>
-                                <li>Architecture differences between devices require careful abstraction design</li>
+                                <li>Understanding how Network Control (TC) works at a low level is crucial for effective traffic management</li>
+                                <li>Message queues like RabbitMQ are powerful tools for building resilient distributed systems</li>
+                                <li>Using python to execute complex system calls is often a more effective method instead of using a Bash script with Python</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <h3 class="subsection-title">Project Management</h3>
                             <ul>
                                 <li>Early and frequent testing saves significant debugging time later</li>
-                                <li>Documentation is crucial for system maintainability</li>
-                                <li>Modular design allows for easier testing and maintenance</li>
-                                <li>Understanding user requirements deeply leads to better design decisions</li>
+                                <li>Documentation should be developed concurrently with development for more accuracy</li>
+                                <li>Modular design allows for easier testing and maintenance and future development</li>
+                                <li>understanding the project requirements deeply at the start can significantly improve speed and quality</li>
                             </ul>
                         </div>
                     </div>
@@ -609,5 +629,11 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Prism JS for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
 </body>
 </html>
