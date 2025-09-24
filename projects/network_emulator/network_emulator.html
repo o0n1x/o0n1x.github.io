@@ -360,11 +360,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="section-title">Problem Statement</h2>
-                    <p>Federated learning Research and Development needs an environment where real world scenarios can be tested on algorithms, complete network control is essential in simulating these environments, but comes we various challenges:</p>
+                    <p>Federated learning Research and Development needs an environment where real world scenarios can be tested on algorithms, complete network control is essential in simulating these environments, but comes with various challenges:</p>
                     
                     <div class="challenge-card">
                         <h5><i class="bi bi-exclamation-triangle"></i> Challenge 1: Heterogeneity</h5>
-                        <p>the system needs to support multiple environment and extreme scenarios due to the nature of federated learning Heterogeneity in connected devices.</p>
+                        <p>the system needs to support multiple environments and extreme scenarios due to the nature of federated learning heterogeneity in connected devices.</p>
                     </div>
                     
                     <div class="challenge-card">
@@ -374,7 +374,7 @@
                     
                     <div class="challenge-card">
                         <h5><i class="bi bi-exclamation-triangle"></i> Challenge 3: Concurrency</h5>
-                        <p>the system is a distributed network of devices each is working in it own separate timeline, so concurrency needs to be taken into account across different devices and network scenarios</p>
+                        <p>the system is a distributed network of devices each is working in its own separate timeline, so concurrency needs to be taken into account across different devices and network scenarios</p>
                     </div>
 
                 </div>
@@ -396,7 +396,7 @@
                             <li><strong>Control Server:</strong> Central management system that orchestrates network configurations and hosts Message broker</li>
                             <li><strong>Publish/Subscribe Message Queue (RabbitMQ):</strong> Asynchronous communication layer for synchronization and communication</li>
                             <li><strong>Device Agents:</strong> Lightweight agents running on each device including server to execute network control commands</li>
-                            <li><strong>YAML Translator:</strong> Sub system that translates input YAML network description into usable tc commands for each device</li>
+                            <li><strong>YAML Translator:</strong> Sub system that translates input config YAML file into usable tc commands for each device</li>
                         </ul>
                     </div>
 
@@ -461,7 +461,7 @@ clients:
     - default
     - DynFast</code></pre>
                     </div>
-                    <p> In this example, we have set 2 network configurations , default and DynFast , where the first is static and second is dynamic respectively, and the OrangePi client is set to use both networks. the static network is applied before the test starts and the dynamic network is applied overtime according to the configuration set.</p>
+                    <p> In this example, we have set 2 network configurations (default and DynFast) where the first is static and second is dynamic respectively, and the OrangePi client is set to use both networks. the static network is applied before the test starts and the dynamic network is applied overtime according to the configuration set.</p>
                 </div>
             </div>
         </div>
@@ -526,7 +526,7 @@ clients:
                         <div class="col-md-3">
                             <div class="result-metric">
                                 <div class="metric-number">2</div>
-                                <div class="metric-label">files only required to be modified from original codebase</div>
+                                <div class="metric-label">files required to be modified from original codebase only</div>
                             </div>
                         </div>
                     </div>
