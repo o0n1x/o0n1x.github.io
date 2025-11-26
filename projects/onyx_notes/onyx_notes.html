@@ -1,0 +1,735 @@
+<!-- 
+    Hello there! Thanks for checking out my portfolio website code.
+    
+    This website is built with HTML, CSS, and Bootstrap 5 for a responsive, modern design.
+    As a Distributed Systems specialist, web development isn't my primary focus, 
+    and I've collaborated with others to create this site.
+    
+    Feel free to explore the code, and I welcome any feedback or suggestions!
+    
+    - Abdullah Alamoudi
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyx Notes - Abdullah Alamoudi</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- PrismJS Syntax highlight -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #27ae60;
+            --text-light: #ecf0f1;
+            --bg-dark: #1a1a2e;
+            --onyx-accent: #8b5cf6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8f9fa;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--bg-dark) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+        
+        /* Project Hero Section */
+        .project-hero {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e1b4b 100%);
+            color: white;
+            padding: 120px 0 80px 0;
+        }
+        
+        .project-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .project-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background-color: var(--onyx-accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            margin: 5px;
+        }
+        
+        .github-btn {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .github-btn:hover {
+            background-color: #555;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            padding: 60px 10px;
+            background-color: white;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--onyx-accent);
+            display: inline-block;
+        }
+        
+        .subsection-title {
+            color: var(--onyx-accent);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 30px 0 20px 0;
+        }
+        
+        /* Feature Cards */
+        .feature-card {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Challenge & Solution Cards */
+        .challenge-card {
+            background-color: #E6E3F0;
+            border-left: 5px solid #D4CDEB;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .solution-card {
+            background-color: #d4edda;
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        /* Technical Details */
+        .code-snippet pre[class*="language-"],
+        .code-snippet code[class*="language-"] {
+            background: none !important;
+            background-color: transparent !important;
+        }
+
+        .tech-detail {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .code-snippet {
+            background-color: #1a1a2e;
+            color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        /* Terminal Demo */
+        .terminal-demo {
+            background-color: #0d0d0d;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .terminal-header {
+            background-color: #2d2d2d;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .terminal-dot.red { background-color: #ff5f56; }
+        .terminal-dot.yellow { background-color: #ffbd2e; }
+        .terminal-dot.green { background-color: #27c93f; }
+        
+        .terminal-body {
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            color: #c0c0c0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Results Section */
+        .result-metric {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--onyx-accent);
+        }
+        
+        .metric-label {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+        
+        /* Image Gallery */
+        .project-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--onyx-accent);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 20px;
+            width: 1px;
+            height: calc(100% + 15px);
+            background-color: #dee2e6;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        /* Keyboard shortcut styling */
+        kbd {
+            background-color: #2d2d2d;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 2px 0 #1a1a1a;
+        }
+        
+        /* Navigation Buttons */
+        .project-nav {
+            padding: 40px 0;
+        }
+        
+        .nav-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .nav-btn:hover {
+            background-color: var(--onyx-accent);
+            color: white;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0d0d1a;
+            color: var(--text-light);
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        /* Status Badge */
+        .status-badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+        
+        .status-badge.beta {
+            background-color: #f59e0b;
+        }
+        
+        /* Shortcut table */
+        .shortcut-table {
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .shortcut-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .shortcut-table td:first-child {
+            width: 150px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2rem;
+            }
+            .metric-number {
+                font-size: 2rem;
+            }
+            .content-section {
+                padding: 40px 20px;
+            }
+            .feature-card {
+                margin-bottom: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">AA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html#projects">All Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="project-title">
+                        Onyx Notes
+                        <span class="status-badge beta">v0.1.0 Beta</span>
+                    </h1>
+                    <p class="project-meta">
+                        <i class="bi bi-calendar3"></i> November 2025 | 
+                        <i class="bi bi-person"></i> Personal Project
+                    </p>
+                    <p class="lead mt-4">A terminal-based note-taking app for managing Markdown files with multiple vaults, keyboard-driven navigation, and a multi-panel interface. Built with Python and Textual.</p>
+                    <div class="mt-4">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Textual</span>
+                        <span class="tech-badge">Markdown</span>
+                        <span class="tech-badge">YAML Frontmatter</span>
+                        <span class="tech-badge">TUI</span>
+                    </div>
+                    <a href="https://github.com/o0n1x/onyx-notes" target="_blank" class="github-btn">
+                        <i class="bi bi-github"></i> View on GitHub
+                    </a>
+                    <p class="mt-3" style="opacity: 0.8; font-size: 0.95rem;">
+                        <i class="bi bi-terminal"></i> Clone and run <code style="background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px;">./start.sh</code> to try it
+                    </p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="bi bi-journal-text" style="font-size: 10rem; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <div class="container">
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="lead">Onyx Notes is a personal project built for developers and terminal users who want to take notes directly in the terminal with a nice TUI and intuitive shortcuts. It brings vault-based organization and Markdown editing to the terminal with a clean, modern TUI.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-4 gy-4">
+                            <div class="feature-card text-center">
+                                <i class="bi bi-collection feature-icon"></i>
+                                <h4>Multiple Vaults</h4>
+                                <p>Create, delete, and manage multiple vaults to organize notes by project, topic, or context</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 gy-4">
+                            <div class="feature-card text-center">
+                                <i class="bi bi-keyboard feature-icon"></i>
+                                <h4>Keyboard Driven</h4>
+                                <p>Efficient navigation throughout the app with intuitive shortcuts for every action</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 gy-4">
+                            <div class="feature-card text-center">
+                                <i class="bi bi-layout-three-columns feature-icon"></i>
+                                <h4>Multi-Panel Interface</h4>
+                                <p>Edit, preview, and view statistics simultaneously with modular panel management</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo Section -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Interface Preview</h2>
+                    <p>Onyx Notes features a clean multi-panel interface built with Textual:</p>
+                    
+                    <div class="col-lg-8 mx-auto text-center">
+                            <a href="../../assets/diagrams/notetaking.png" target="_blank" class="d-inline-block">
+                                <img src="../../assets/diagrams/notetaking.png" 
+                                    alt="Onyx Notes Interface Preview (Click to enlarge)" 
+                                    class="img-fluid project-image">
+                            </a>
+                            <p class="text-muted mt-2">
+                                <small><i class="bi bi-zoom-in"></i> Click image to view full size</small>
+                            </p>
+                        </div>
+                    
+                    <p class="text-muted text-center"><i class="bi bi-info-circle"></i> Multi-panel layout with directory tree, editor, preview, and statistics</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Motivation -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Motive</h2>
+                    <p>I built this to get hands-on experience with TUI development, file I/O patterns, and shipping a complete application from design to release. Along the way, several engineering perspectives were reinforced:</p>
+                    
+                    <div class="challenge-card">
+                        <h5> User Experience Design</h5>
+                        <p>TUI applications demand intuitive design thinking. When building a tool meant for frequent, rapid use, any friction in the interaction flow significantly impacts the overall experience. This project sharpened my ability to anticipate user needs and minimize cognitive load.</p>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <h5> File and Vault Organization</h5>
+                        <p>Managing note files across multiple vaults required evaluating different storage strategies and determining which approach best serves the application's purpose—balancing simplicity, performance, and portability.</p>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <h5> Full Application Lifecycle</h5>
+                        <p>This project provided experience across the complete development cycle: from initial design and planning, through implementation and feature iteration, to user testing and preparing a release.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Key Features</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>Multiple Vaults</h5>
+                            <p>Create and manage separate vaults for different contexts. Quick search on startup lets you filter and select vaults instantly.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Nested Folder Structure</h5>
+                            <p>Organize notes in hierarchical directories. Create notes with paths like <code>folder/subfolder/note.md</code> and folders are created automatically.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Modular Panel Management</h5>
+                            <p>Toggle panels independently with <kbd>F1</kbd> (Editor), <kbd>F2</kbd> (Viewer), <kbd>F3</kbd> (Metadata) to customize your workspace.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Note Metadata & Statistics</h5>
+                            <p>Real-time word count, line count, creation date, tags, and modification timestamps displayed in the metadata panel.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>YAML Frontmatter Support</h5>
+                            <p>Similar to the Obsidian note-taking app, Onyx Notes includes metadata (title, tags, created/modified dates) in YAML frontmatter.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Technical Implementation</h2>
+                    
+                    <h3 class="subsection-title">Architecture</h3>
+                    <p>The application is structured with clear separation of concerns:</p>
+                    
+                    <div class="tech-detail">
+                        <h5>Project Structure:</h5>
+                        <div class="code-snippet">
+                            <pre><code class="language-text">onyx-notes/
+├── src/
+│   ├── __init__.py    # Package init
+│   ├── tui.py         # Main TUI application (Textual)
+│   ├── note.py        # Note data model
+│   ├── vault.py       # Vault management
+│   ├── note_io.py     # File I/O operations
+│   ├── graph.py       # Planned feature
+│   └── style.tcss     # Textual CSS styling
+├── requirements.txt   # Dependencies
+├── start.sh           # Linux/Mac launcher
+├── start.bat          # Windows launcher
+└── README.md          # Documentation</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Note Format</h3>
+                    <p>Notes are stored as Markdown files with YAML frontmatter, maintaining compatibility with Obsidian:</p>
+                    
+                    <div class="code-snippet">
+                        <pre><code class="language-yaml">---
+title: My Note
+tags: [example, demo]
+created: 2025-01-15 10:30:00
+last_modified: 2025-01-15 14:20:00
+---
+
+# My Note
+
+Note content goes here in Markdown format...</code></pre>
+                    </div>
+
+                    <h3 class="subsection-title">Key Design Decisions</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="solution-card">
+                                <h5><i class="bi bi-check-circle"></i> Textual Framework</h5>
+                                <p>Chose Textual for its modern and simple approach to TUI development in Python, with CSS-like styling and reactive components.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="solution-card">
+                                <h5><i class="bi bi-check-circle"></i> Frontmatter Library</h5>
+                                <p>Uses the frontmatter library for parsing YAML metadata, ensuring compatibility with existing Markdown tools while keeping it simple.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="solution-card">
+                                <h5><i class="bi bi-check-circle"></i> File-Based Storage</h5>
+                                <p>Notes are plain Markdown files on disk, making backup, sync, and external editing straightforward.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="solution-card">
+                                <h5><i class="bi bi-check-circle"></i> Portable Distribution</h5>
+                                <p>Includes portable release with start/installation scripts for all platforms, no installation required.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Status & Roadmap -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Current Status & Roadmap</h2>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="tech-detail">
+                                <h5><i class="bi bi-check-circle text-success"></i> Completed (v0.1.0)</h5>
+                                <ul>
+                                    <li>Multi-vault management with search</li>
+                                    <li>Multi-panel TUI interface</li>
+                                    <li>Markdown editing with preview</li>
+                                    <li>YAML frontmatter support</li>
+                                    <li>Nested folder organization</li>
+                                    <li>Note statistics tracking</li>
+                                    <li>Keyboard-driven navigation</li>
+                                    <li>Portable release packaging</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tech-detail">
+                                <h5><i class="bi bi-arrow-right-circle text-warning"></i> Planned Features</h5>
+                                <ul>
+                                    <li>Graph page with wiki-style links between notes</li>
+                                    <li>Custom interactive graph widget</li>
+                                    <li>Custom tags support for notes</li>
+                                    <li>Ability to add custom metadata fields</li>
+                                    <li>Improved keyboard navigation shortcuts</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technologies Used -->
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">Technologies & Tools</h2>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="tech-detail">
+                                <h5>Language</h5>
+                                <p><strong>Python 3.12+:</strong> Primary language for development, chosen for rapid development and suitable library ecosystem.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tech-detail">
+                                <h5>TUI Framework</h5>
+                                <p><strong>Textual:</strong> Modern Python framework for building sophisticated terminal user interfaces with CSS-like styling and reactive patterns.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tech-detail">
+                                <h5>Markdown Processing</h5>
+                                <p><strong>Frontmatter:</strong> Library for parsing and writing YAML frontmatter in Markdown files, enabling metadata support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Project Navigation -->
+        <div class="project-nav text-center">
+            <a href="../../index.html" class="nav-btn">
+                <i class="bi bi-arrow-left"></i> Back to Portfolio
+            </a>
+            <a href="../../index.html#projects" class="nav-btn">
+                View All Projects
+            </a>
+            <a href="../network_emulator/network_emulator.html" class="nav-btn">
+                Next Project <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>2025 Abdullah Alamoudi | Software Engineer</p>        
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Prism JS for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+</body>
+</html>
