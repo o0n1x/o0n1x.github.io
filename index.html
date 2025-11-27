@@ -103,6 +103,18 @@
             margin: 5px;
             display: inline-block;
         }
+
+        .github-btn.btn-outline-light {
+            background: white;
+            color: #333;
+            border-color: white;
+        }
+
+        .github-btn.btn-outline-light:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
         
         /* Education & Experience Cards */
         .timeline-card {
@@ -372,7 +384,7 @@
                 <div class="col-lg-8">
                     <h1 class="hero-title">Abdullah Alamoudi</h1>
                     <p class="hero-subtitle">Software Engineer<span class="typing-effect"></span></p>
-                    <p class="lead mb-4">Recent KAUST MS Computer Science graduate focusing on Distributed Systems Software Development. Experienced in Python, Docker/Kubernetes, and network automation. Seeking entry-level Software Engineering opportunities to apply expertise in building scalable systems.</p>
+                    <p class="lead mb-4">Recent KAUST MS Computer Science graduate focusing on Backend Engineering. Experienced in Python, Docker/Kubernetes, network automation, and distributed systems . Seeking entry-level Backend Software Engineering opportunities to apply expertise in building scalable systems.</p>
                     <div class="mt-4">
                         <span class="badge-custom"><i class="bi bi-geo-alt"></i> Etobicoke, ON</span>
                         <span class="badge-custom"><i class="bi bi-laptop"></i> Open to Remote</span>
@@ -381,7 +393,14 @@
                     <div class="mt-4">
                         <a href="#projects" class="btn btn-primary btn-lg me-3">View Projects</a>
                         <a href="#contact" class="btn btn-outline-light btn-lg">Get In Touch</a>
+                        
                     </div>
+                    <div class="mt-4">
+                        <a href="https://github.com/o0n1x" target="_blank" class="btn btn-outline-light btn-lg github-btn">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                    </div>
+                    
                 </div>
                 <div class="col-lg-4 text-center">
                     <div class="p-4">
@@ -398,6 +417,19 @@
             <h2 class="text-center mb-5">Education</h2>
             <div class="row">
                 <div class="col-lg-10 mx-auto">
+                    <div class="timeline-card">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4>Boot.dev Bootcamp</h4>
+                                <h5 class="text-muted"><a href="https://www.boot.dev">Boot.dev</a></h5>
+                                <p class="mb-2"><strong>Path:</strong> Backend with Golang</p>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <span class="timeline-date">Fall 2025 – Present</span>
+                                <p class="text-muted">Remote</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="timeline-card">
                         <div class="row">
                             <div class="col-md-8">
@@ -476,8 +508,6 @@
                             <span class="skill-tag advanced">Python (Advanced)</span>
                             <span class="skill-tag">Go lang</span>
                             <span class="skill-tag">SystemVerilog</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">PHP</span>
                             <span class="skill-tag">R</span>
                         </div>
                     </div>
@@ -509,7 +539,8 @@
                         <h5><i class="bi bi-diagram-3"></i> Concepts</h5>
                         <div>
                             <span class="skill-tag">Distributed Systems</span>
-                            <span class="skill-tag">Concurrency (RAFT)</span>
+                            <span class="skill-tag">RAFT consensus algorithm</span>
+                            <span class="skill-tag">Concurrency</span>
                             <span class="skill-tag">Network Programming</span>
                             <span class="skill-tag">Agile/SCRUM</span>
                         </div>
@@ -525,6 +556,31 @@
             <h2 class="text-center mb-5">Recent Projects</h2>
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-4">
+                    <a href="projects/network_emulator/network_emulator.html" class="project-card card">
+                        <div class="card-header">
+                            <i class="bi bi-star-fill text-warning me-2"></i>
+                            Network Control System
+                        </div>
+                        <div class="card-body">
+                            <p class="project-date">Spring 2025</p>
+                            <p class="small">Engineered a network traffic management pipeline from scratch using Python, Linux's Traffic Control, and RabbitMQ enabling precise control of latency and bandwidth for 20+ Linux devices.</p>
+                            
+                            <div class="d-flex gap-3 text-muted small mb-3">
+                                <span><i class="bi bi-hdd-network me-1"></i>20+ devices</span>
+                                <span><i class="bi bi-code-slash me-1"></i>1K+ lines</span>
+                            </div>
+                            
+                            <div class="mt-3">
+                                <span class="project-tech">Python</span>
+                                <span class="project-tech">Linux TC</span>
+                                <span class="project-tech">RabbitMQ</span>
+                            </div>
+                            
+                            <button class="view-project-btn">View Details <i class="bi bi-arrow-right"></i></button>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
                     <a href="projects/onyx_notes/onyx_notes.html" class="project-card card">
                         <div class="card-header">
                             <i class="bi bi-star-fill text-warning me-2"></i>
@@ -534,28 +590,16 @@
                         <div class="card-body">
                             <p class="project-date">Fall 2025</p>
                             <p class="small">A terminal-based note-taking app for managing Markdown files with multiple vaults, keyboard-driven navigation, and a multi-panel interface.</p>
+                            
+                            <div class="d-flex gap-3 text-muted small mb-3">
+                                <span><i class="bi bi-code-slash me-1"></i>1.1K lines</span>
+                                <span><i class="bi bi-check-circle me-1"></i>550+ lines of tests</span>
+                            </div>
+                            
                             <div class="mt-3">
                                 <span class="project-tech">Python</span>
                                 <span class="project-tech">Textual</span>
                                 <span class="project-tech">YAML Frontmatter</span>
-                            </div>
-                            <button class="view-project-btn">View Details <i class="bi bi-arrow-right"></i></button>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="projects/network_emulator/network_emulator.html" class="project-card card">
-                        <div class="card-header">
-                            <i class="bi bi-star-fill text-warning me-2"></i>
-                            Network Control System
-                        </div>
-                        <div class="card-body">
-                            <p class="project-date">Spring 2025</p>
-                            <p class="small">Engineered a network traffic management pipeline from scratch using Python, Linux's Traffic Control, and RabbitMQ enabling precise control of latency and bandwidth for 20+ Linux devices.</p>
-                            <div class="mt-3">
-                                <span class="project-tech">Python</span>
-                                <span class="project-tech">Linux TC</span>
-                                <span class="project-tech">RabbitMQ</span>
                             </div>
                             <button class="view-project-btn">View Details <i class="bi bi-arrow-right"></i></button>
                         </div>
@@ -570,6 +614,11 @@
                         <div class="card-body">
                             <p class="project-date">Spring 2025</p>
                             <p class="small">Developed a three-stage model for generating drawing strokes of a given input image at each stage of drawing. Repurposed a sophisticated Model by enhancing and tuning reward functions.</p>
+                            
+                            <div class="d-flex gap-3 text-muted small mb-3">
+                                <span><i class="bi bi-layers me-1"></i>3-stage model</span>
+                            </div>
+                            
                             <div class="mt-3">
                                 <span class="project-tech">Python</span>
                                 <span class="project-tech">Deep Learning</span>
@@ -588,6 +637,12 @@
                         <div class="card-body">
                             <p class="project-date">Fall 2024</p>
                             <p class="small">Designed and built a compression pipeline that utilizes 4+ techniques and algorithms to compress visual weather data from 18GB to only 1.2GB.</p>
+                            
+                            <div class="d-flex gap-3 text-muted small mb-3">
+                                <span><i class="bi bi-file-zip me-1"></i>18GB → 1.2GB</span>
+                                <span><i class="bi bi-gear me-1"></i>4+ algorithms</span>
+                            </div>
+                            
                             <div class="mt-3">
                                 <span class="project-tech">Data Compression</span>
                                 <span class="project-tech">Algorithms</span>
@@ -606,6 +661,13 @@
                         <div class="card-body">
                             <p class="project-date">Fall 2024</p>
                             <p class="small">Engineered a rudimentary game engine from the ground up with a team of 2, utilizing SystemVerilog to simulate graphics and implement basic game mechanics.</p>
+                            
+                            <div class="d-flex gap-3 text-muted small mb-3">
+                                <span><i class="bi bi-code-slash me-1"></i>1K+ lines</span>
+                                <span><i class="bi bi-box me-1"></i>10+ modules</span>
+                                <span><i class="bi bi-people me-1"></i>Team of 2</span>
+                            </div>
+                            
                             <div class="mt-3">
                                 <span class="project-tech">SystemVerilog</span>
                                 <span class="project-tech">HDL</span>
